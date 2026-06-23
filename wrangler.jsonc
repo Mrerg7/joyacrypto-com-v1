@@ -1,5 +1,5 @@
 {
-  "name": "joyacrypto-com",
+  "name": "joyacrypto-com-v1",
   "assets": {
     "directory": "dist",
     "html_handling": "auto-trailing-slash"
