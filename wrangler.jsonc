@@ -2,7 +2,7 @@
   "name": "joyacrypto-com",
   "assets": {
     "directory": "dist",
-    "html_handling": "auto_trailing_slash"
+    "html_handling": "auto-trailing-slash"
   },
   "compatibility_date": "2025-06-23"
 }
