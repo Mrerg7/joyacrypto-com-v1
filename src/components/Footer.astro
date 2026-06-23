@@ -1,0 +1,60 @@
+---
+import { SITE } from '../consts';
+---
+
+<footer class="border-t border-zinc-800 bg-zinc-950">
+  <!-- Domain Acquisition CTA -->
+  <div class="max-w-screen-xl mx-auto px-6 pt-14 pb-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-emerald-400/5 border border-emerald-400/30 mb-6">
+        <i class="fa-solid fa-gem text-2xl text-emerald-400"></i>
+      </div>
+
+      <h3 class="text-2xl md:text-3xl font-semibold tracking-tighter mb-3">
+        <span class="text-white">Joyacrypto.com</span>{' '}
+        <span class="text-zinc-500">is available for acquisition</span>
+      </h3>
+
+      <p class="text-zinc-400 max-w-lg mx-auto mb-8 leading-relaxed">
+        A rare premium .com domain positioned for luxury crypto, premium DeFi, and enduring digital wealth platforms.
+        Serious inquiries from qualified founders, organizations, and their representatives are welcomed.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href={`mailto:${SITE.email}?subject=Acquisition:%20Joyacrypto.com`}
+           class="group inline-flex items-center justify-center gap-x-3 px-8 py-4 text-base font-semibold rounded-2xl bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-300 hover:to-emerald-400 active:scale-[0.985] text-zinc-950 shadow-lg shadow-emerald-400/20 transition-all">
+          <i class="fa-solid fa-envelope group-hover:-translate-y-px transition-transform"></i>
+          <span>Inquire: {SITE.email}</span>
+        </a>
+        <span class="text-sm text-zinc-600">Private sale • Escrow available</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="border-t border-zinc-800"></div>
+
+  <!-- Bottom Bar -->
+  <div class="max-w-screen-xl mx-auto px-6 py-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-y-4 text-sm text-zinc-500">
+      <div>
+        <span class="text-zinc-400">&copy; 2026 Joyacrypto.com.</span>{' '}
+        <span class="text-xs">Premium digital asset offered by private seller.</span>
+      </div>
+      <div class="flex items-center gap-x-5 text-xs">
+        <a href="#" class="hover:text-zinc-300 transition-colors">View WHOIS</a>
+        <span class="text-zinc-700">•</span>
+        <a href="#" class="hover:text-zinc-300 transition-colors">Comparable Sales</a>
+        <span class="text-zinc-700">•</span>
+        <span>Escrow via trusted partners</span>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="mt-6 pt-5 border-t border-zinc-800/50">
+      <p class="text-xs text-zinc-600 leading-relaxed text-center max-w-3xl mx-auto">
+        {SITE.disclaimer}
+      </p>
+    </div>
+  </div>
+</footer>

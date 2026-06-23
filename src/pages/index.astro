@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import HeroSection from '../components/HeroSection.astro';
+import TrustBar from '../components/TrustBar.astro';
+import MeaningSection from '../components/MeaningSection.astro';
+import OpportunitySection from '../components/OpportunitySection.astro';
+import PremiumReasonsSection from '../components/PremiumReasonsSection.astro';
+import UseCasesSection from '../components/UseCasesSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <Header />
+  <HeroSection />
+  <TrustBar />
+  <MeaningSection />
+  <OpportunitySection />
+  <PremiumReasonsSection />
+  <UseCasesSection />
+  <CTASection />
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Navbar scroll effect
+  function initNavbar() {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('nav-scrolled', 'shadow-lg');
+      } else {
+        nav.classList.remove('nav-scrolled', 'shadow-lg');
+      }
+    });
+  }
+
+  // Smooth scroll for anchor links
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href) return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const navHeight = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - navHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      });
+    });
+  }
+
+  // Keyboard accessibility — press '?' to jump to contact
+  function initKeyboard() {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === '?' && document.activeElement?.tagName === 'BODY') {
+        e.preventDefault();
+        const contact = document.getElementById('contact');
+        if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+
+  // Boot
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initNavbar();
+      initSmoothScroll();
+      initKeyboard();
+    });
+  } else {
+    initNavbar();
+    initSmoothScroll();
+    initKeyboard();
+  }
+</script>

@@ -1,0 +1,69 @@
+---
+import { SITE } from '../consts';
+---
+
+<section class="pt-20 pb-16 md:pt-24 md:pb-20 border-b border-zinc-800">
+  <div class="max-w-screen-xl mx-auto px-6">
+    <div class="grid md:grid-cols-12 gap-x-8 items-center">
+      <!-- Hero Text -->
+      <div class="md:col-span-7 lg:col-span-7 max-w-2xl">
+        <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-zinc-900 border border-zinc-800 mb-6">
+          <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+          <span class="text-xs font-medium tracking-[1.5px] text-emerald-400">PREMIUM .COM DOMAIN</span>
+        </div>
+
+        <h1 class="text-6xl md:text-7xl lg:text-7xl leading-[0.92] tracking-tighter font-semibold mb-4">
+          <span class="domain-name">Joyacrypto</span><br>
+          <span class="text-5xl md:text-6xl text-white">.com</span>
+        </h1>
+
+        <p class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-3">
+          Crypto Jewel
+        </p>
+
+        <p class="max-w-lg text-xl text-zinc-400 mb-8">
+          The premium domain that captures the rare beauty and enduring value of digital wealth.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact"
+             class="group inline-flex items-center justify-center gap-x-3 px-8 py-4 text-base font-semibold rounded-3xl bg-white text-zinc-950 hover:bg-emerald-50 active:scale-[0.985] transition-all shadow-xl">
+            <span>Secure This Domain</span>
+            <i class="fa-solid fa-arrow-right group-hover:translate-x-0.5 transition-transform"></i>
+          </a>
+
+          <a href="#opportunity"
+             class="inline-flex items-center justify-center gap-x-2 px-7 py-4 text-base font-medium rounded-3xl border border-zinc-700 hover:bg-zinc-900 transition-all">
+            <span>Explore the Opportunity</span>
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center gap-x-6 text-sm text-zinc-500">
+          <div class="flex items-center gap-x-1.5">
+            <i class="fa-solid fa-gem text-emerald-400"></i>
+            <span>Rare &amp; Enduring Value</span>
+          </div>
+          <div class="w-px h-3 bg-zinc-700"></div>
+          <div>Instant Prestige</div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="md:col-span-5 lg:col-span-5 mt-12 md:mt-0">
+        <div class="relative rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl crypto-glow">
+          <img
+            src={SITE.heroImage}
+            alt="Brilliant glowing emerald crypto jewel with Bitcoin and Ethereum symbols — representing the rare beauty and value of Joyacrypto.com"
+            class="w-full h-auto object-cover aspect-[16/10.5]"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-zinc-950/20 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <div class="text-xs uppercase tracking-[2px] text-emerald-400/90 font-medium">THE NEW PRECIOUS STONES</div>
+            <div class="text-white text-xl font-semibold tracking-tight">Digital jewels of lasting value.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

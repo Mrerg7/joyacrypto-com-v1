@@ -1,0 +1,16 @@
+---
+import { TRUST_BAR_ITEMS } from '../consts';
+---
+
+<div class="border-b border-zinc-800 bg-zinc-900/50">
+  <div class="max-w-screen-xl mx-auto px-6 py-5">
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-xs uppercase tracking-widest text-zinc-500 font-medium">
+      {TRUST_BAR_ITEMS.map((item) => (
+        <div class="flex items-center gap-x-2">
+          <i class="fa-solid fa-check text-emerald-400"></i>
+          <span>{item}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

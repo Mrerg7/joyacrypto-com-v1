@@ -1,0 +1,27 @@
+---
+import { PREMIUM_REASONS } from '../consts';
+---
+
+<section id="why-premium" class="max-w-screen-xl mx-auto px-6 py-20">
+  <div class="max-w-2xl mx-auto text-center mb-12">
+    <div class="inline-block px-4 py-1 text-xs font-semibold tracking-[2px] text-emerald-400 bg-emerald-400/10 rounded-2xl mb-4">PREMIUM ASSET</div>
+    <h2 class="section-header tracking-tighter">Why Joyacrypto.com<br>commands a <span class="jewel-text">high acquisition price</span></h2>
+    <p class="mt-4 text-xl text-zinc-400">This is more than a domain — it is a ready-made luxury brand for the digital age.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+    {PREMIUM_REASONS.map((reason) => (
+      <div class="premium-card bg-zinc-900 border border-zinc-700 rounded-3xl p-7">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-400/10 flex items-center justify-center mb-5">
+          <i class={`fa-solid ${reason.icon} text-2xl text-emerald-400`}></i>
+        </div>
+        <h4 class="font-semibold text-xl tracking-tight mb-2">{reason.title}</h4>
+        <p class="text-zinc-400">{reason.description}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="max-w-3xl mx-auto mt-12 text-center text-sm text-zinc-400 border-t border-zinc-800 pt-8">
+    In a market where premium keyword and emotionally resonant .com domains in crypto and emerging tech regularly transact at significant valuations, Joyacrypto.com stands out as a rare, ownable luxury digital asset with both immediate brand power and lasting strategic value.
+  </div>
+</section>

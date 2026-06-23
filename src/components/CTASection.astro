@@ -1,0 +1,51 @@
+---
+import { SITE } from '../consts';
+---
+
+<section id="contact" class="bg-zinc-900 border-t border-zinc-800 py-16">
+  <div class="max-w-screen-xl mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-emerald-400 to-emerald-500 mb-6 shadow-inner">
+        <i class="fa-solid fa-gem text-zinc-950 text-3xl"></i>
+      </div>
+
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tighter mb-4">Ready to own<br>a true crypto jewel?</h2>
+      <p class="text-xl text-zinc-400 max-w-md mx-auto">Joyacrypto.com is available for private acquisition by serious founders and organizations building premium digital experiences.</p>
+
+      <div class="mt-8 max-w-md mx-auto">
+        <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8 text-left">
+          <div class="uppercase text-xs tracking-[2px] text-emerald-400 font-semibold mb-3">ACQUISITION DETAILS</div>
+
+          <div class="space-y-4 text-sm">
+            <div class="flex justify-between items-center py-1 border-b border-zinc-800">
+              <span class="text-zinc-400">Domain</span>
+              <span class="font-mono font-medium text-white">joyacrypto.com</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-zinc-800">
+              <span class="text-zinc-400">Extension</span>
+              <span class="font-medium">.com (Premium)</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-zinc-800">
+              <span class="text-zinc-400">Positioning</span>
+              <span class="font-medium">Luxury / Premium Brand Asset</span>
+            </div>
+            <div class="pt-2">
+              <div class="text-xs text-zinc-500">Pricing reflects the name's rarity, emotional resonance, keyword strength, and strong positioning in the premium crypto and digital asset space. Inquiries from qualified buyers and representatives are welcome. Flexible terms considered.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="mt-8">
+        <a href={`mailto:${SITE.email}?subject=Inquiry%20for%20Joyacrypto.com&body=Hello%2C%0A%0AI%20am%20interested%20in%20acquiring%20joyacrypto.com.%0A%0APlease%20provide%20pricing%20and%20next%20steps.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D%0A%5BYour%20Company%20/%20Project%5D`}
+           class="group inline-flex w-full sm:w-auto items-center justify-center gap-x-3 px-10 py-5 text-lg font-semibold rounded-3xl bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-300 hover:to-emerald-400 active:scale-[0.985] text-zinc-950 shadow-xl transition-all">
+          <span>Contact to Acquire</span>
+          <i class="fa-solid fa-envelope group-hover:-translate-y-px transition-transform"></i>
+        </a>
+
+        <p class="mt-4 text-xs text-zinc-500">Serious inquiries only. Pricing and terms provided privately to qualified buyers.</p>
+      </div>
+    </div>
+  </div>
+</section>

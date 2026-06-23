@@ -1,0 +1,8 @@
+{
+  "name": "joyacrypto-com",
+  "assets": {
+    "directory": "dist",
+    "html_handling": "auto_trailing_slash"
+  },
+  "compatibility_date": "2025-06-23"
+}

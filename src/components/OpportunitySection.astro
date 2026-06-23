@@ -1,0 +1,31 @@
+---
+import { STATS } from '../consts';
+---
+
+<section id="opportunity" class="bg-zinc-900 border-y border-zinc-800 py-16">
+  <div class="max-w-screen-xl mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <div class="inline-block px-4 py-1 text-xs font-semibold tracking-[2px] text-emerald-400 bg-emerald-400/10 rounded-2xl mb-4">THE CRYPTO WEALTH REVOLUTION</div>
+      <h2 class="section-header tracking-tighter">Anyone, anywhere, can now<br>discover and own <span class="jewel-text">digital jewels</span>.</h2>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-invert prose-lg max-w-none text-zinc-300">
+        <p class="text-xl leading-relaxed">With the advent of cryptocurrency, wealth creation has been radically democratized. The most valuable "jewels" in this new economy are not locked away in vaults — they are digital, portable, and accessible to anyone with vision, timing, and the right tools.</p>
+
+        <p class="mt-6">From Lagos to Lima, from Manila to Madrid, individuals and communities are identifying, acquiring, and building scarce digital assets that hold real, lasting value. These are the new precious stones of the 21st century: high-conviction tokens, groundbreaking protocols, beautiful NFT collections, and thriving decentralized economies.</p>
+
+        <p class="mt-6">In a world flooded with noise and low-quality projects, the brands that stand out are those that feel like true jewels — rare, desirable, and built to endure.</p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {STATS.map((stat) => (
+          <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-5 text-center">
+            <div class="text-4xl font-semibold text-white tracking-tighter">{stat.label}</div>
+            <div class="text-sm text-zinc-400 mt-1">{stat.description}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
