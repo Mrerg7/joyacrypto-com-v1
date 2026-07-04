@@ -4,6 +4,9 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
 
+/404.html
+  X-Robots-Tag: noindex, nofollow
+
 https://joyacrypto.com/
   Link: <https://joyacrypto.com/>; rel="canonical"
 
