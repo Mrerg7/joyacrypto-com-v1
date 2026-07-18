@@ -2,7 +2,7 @@ export const SITE = {
   title: 'Joyacrypto.com • Crypto Jewel | Premium Domain for Sale',
   description:
     'Joyacrypto.com — The premium .com domain meaning \'Crypto Jewel\'. A rare, beautiful, and valuable brand asset for the next generation of premium crypto projects, luxury digital assets, and enduring wealth platforms.',
-  url: 'https://joyacrypto.com',
+  url: 'https://joyacrypto.com/',
   domain: 'joyacrypto.com',
   email: 'sales@desertrich.com',
   ogImage: 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/9359f4df-e8a3-4e6a-8505-1ed0fb40f700/public',
