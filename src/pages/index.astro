@@ -7,20 +7,29 @@ import MeaningSection from '../components/MeaningSection.astro';
 import OpportunitySection from '../components/OpportunitySection.astro';
 import PremiumReasonsSection from '../components/PremiumReasonsSection.astro';
 import UseCasesSection from '../components/UseCasesSection.astro';
+import SocialProof from '../components/SocialProof.astro';
+import FaqSection from '../components/FaqSection.astro';
 import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
+import ConversionOverlays from '../components/ConversionOverlays.astro';
+import { SITE } from '../consts';
 ---
 
 <BaseLayout>
   <Header />
-  <HeroSection />
-  <TrustBar />
-  <MeaningSection />
-  <OpportunitySection />
-  <PremiumReasonsSection />
-  <UseCasesSection />
-  <CTASection />
+  <main id="main">
+    <HeroSection />
+    <TrustBar />
+    <MeaningSection />
+    <OpportunitySection />
+    <PremiumReasonsSection />
+    <UseCasesSection />
+    <SocialProof />
+    <FaqSection />
+    <CTASection />
+  </main>
   <Footer />
+  <ConversionOverlays />
 </BaseLayout>
 
 <script>
@@ -28,34 +37,225 @@ import Footer from '../components/Footer.astro';
   function initNavbar() {
     const nav = document.getElementById('nav');
     if (!nav) return;
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        nav.classList.add('nav-scrolled', 'shadow-lg');
-      } else {
-        nav.classList.remove('nav-scrolled', 'shadow-lg');
-      }
-    });
+    const onScroll = () => {
+      if (window.scrollY > 20) nav.classList.add('nav-scrolled', 'shadow-lg');
+      else nav.classList.remove('nav-scrolled', 'shadow-lg');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
-  // Smooth scroll for anchor links
+  // Smooth scroll for anchor links (accounts for fixed header)
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (!href) return;
+        if (!href || href === '#') return;
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
           const navHeight = 80;
           const elementPosition = target.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.scrollY - navHeight;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth',
-          });
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          // Close mobile menu on navigate
+          const menu = document.getElementById('mobile-menu');
+          const btn = document.getElementById('menu-button');
+          if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            btn?.setAttribute('aria-expanded', 'false');
+          }
+          history.replaceState(null, '', href);
         }
       });
+    });
+  }
+
+  // Mobile menu toggle
+  function initMobileMenu() {
+    const btn = document.getElementById('menu-button');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', !open ? 'Close menu' : 'Open menu');
+    });
+  }
+
+  // Dark / light mode toggle (persisted, free-plan friendly: pure CSS vars)
+  function initTheme() {
+    const btn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('joya-theme');
+    if (stored === 'light' || stored === 'dark') {
+      root.dataset.theme = stored;
+      btn?.setAttribute('aria-pressed', String(stored === 'light'));
+    }
+    btn?.addEventListener('click', () => {
+      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      root.dataset.theme = next;
+      localStorage.setItem('joya-theme', next);
+      btn.setAttribute('aria-pressed', String(next === 'light'));
+    });
+  }
+
+  // Scroll reveal (fade-ins, IntersectionObserver, reduced-motion safe)
+  function initReveal() {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.classList.add('is-visible');
+          io.unobserve(en.target);
+        }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    els.forEach((el) => io.observe(el));
+  }
+
+  // Urgency: pseudo-live viewer counter (deterministic wobble, no backend)
+  function initViewers() {
+    const el = document.getElementById('viewer-count');
+    if (!el) return;
+    let n = 12 + (Date.now() % 7);
+    const render = () => { el.textContent = String(n); };
+    render();
+    setInterval(() => {
+      n = Math.max(8, Math.min(27, n + (Math.random() > 0.5 ? 1 : -1) * Math.ceil(Math.random() * 2)));
+      render();
+    }, 8000);
+  }
+
+  // Portfolio-style use-case filtering
+  function initFilters() {
+    const btns = Array.from(document.querySelectorAll('.filter-btn'));
+    const cards = Array.from(document.querySelectorAll('.usecase-card'));
+    const empty = document.getElementById('usecase-empty');
+    if (!btns.length || !cards.length) return;
+    const ACTIVE = ['border-emerald-400', 'bg-emerald-400', 'text-zinc-950'];
+    const IDLE = ['border-zinc-700', 'text-zinc-300'];
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const f = btn.getAttribute('data-filter');
+        btns.forEach((b) => {
+          const on = b === btn;
+          b.setAttribute('aria-pressed', String(on));
+          b.classList.remove(...(on ? IDLE : ACTIVE));
+          b.classList.add(...(on ? ACTIVE : IDLE));
+        });
+        let visible = 0;
+        cards.forEach((c) => {
+          const show = f === 'all' || c.getAttribute('data-category') === f;
+          c.classList.toggle('hidden', !show);
+          if (show) visible++;
+        });
+        empty?.classList.toggle('hidden', visible !== 0);
+      });
+    });
+  }
+
+  // Offer modal open/close + mailto submit with validation
+  function initOfferModal() {
+    const modal = document.getElementById('offer-modal');
+    if (!modal) return;
+    const open = () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('input')?.focus();
+    };
+    const close = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('[data-open-offer]').forEach((b) => b.addEventListener('click', open));
+    modal.querySelectorAll('[data-close-offer]').forEach((b) => b.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
+    });
+    const form = document.getElementById('offer-form');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = String(data.get('name') || '').trim();
+      const email = String(data.get('email') || '').trim();
+      const amount = String(data.get('amount') || '').trim();
+      const message = String(data.get('message') || '').trim();
+      const err = document.getElementById('offer-error');
+      const valid = name.length > 1 && /.+@.+\..+/.test(email) && Number(amount) > 0;
+      err?.classList.toggle('hidden', valid);
+      if (!valid) return;
+      track('offer-submit', { amount });
+      const subject = encodeURIComponent(`Offer for Joyacrypto.com — $${amount} — ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nOffer (USD): $${amount}\n\nMessage:\n${message}\n\nDomain: joyacrypto.com`);
+      window.location.href = `mailto:sales@desertrich.com?subject=${subject}&body=${body}`;
+      close();
+    });
+  }
+
+  // Exit-intent email capture (desktop mouseout + timed mobile fallback, once per session)
+  function initExitIntent() {
+    const popup = document.getElementById('exit-popup');
+    if (!popup || sessionStorage.getItem('joya-exit-shown')) return;
+    const show = () => {
+      if (!popup.classList.contains('hidden')) return;
+      popup.classList.remove('hidden');
+      popup.classList.add('flex');
+      sessionStorage.setItem('joya-exit-shown', '1');
+      track('exit-popup-shown', {});
+    };
+    const close = () => {
+      popup.classList.add('hidden');
+      popup.classList.remove('flex');
+    };
+    popup.querySelectorAll('[data-close-exit]').forEach((b) => b.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !popup.classList.contains('hidden')) close();
+    });
+    // Desktop: cursor leaves viewport top
+    document.addEventListener('mouseout', (e) => {
+      if (!e.relatedTarget && e.clientY <= 8) show();
+    });
+    // Mobile fallback: after 75s of engagement
+    setTimeout(() => {
+      if (window.scrollY > 600) show();
+    }, 75000);
+    document.getElementById('exit-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('exit-email');
+      const err = document.getElementById('exit-error');
+      const email = String(input?.value || '').trim();
+      const valid = /.+@.+\..+/.test(email);
+      err?.classList.toggle('hidden', valid);
+      if (!valid) return;
+      track('exit-email-submit', {});
+      const subject = encodeURIComponent('Pricing request: Joyacrypto.com');
+      const body = encodeURIComponent(`Hello,\n\nPlease send pricing and escrow steps for joyacrypto.com to: ${email}\n\nThank you.`);
+      window.location.href = `mailto:sales@desertrich.com?subject=${subject}&body=${body}`;
+      close();
+    });
+  }
+
+  // Lightweight conversion tracking hook (data-track attrs; GA/Meta pixels plug in here)
+  function track(event, params) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event, ...params });
+    } catch {}
+    if (window.location.hostname === 'localhost') console.debug('[track]', event, params);
+  }
+  function initTracking() {
+    document.querySelectorAll('[data-track]').forEach((el) => {
+      el.addEventListener('click', () => track(el.getAttribute('data-track') || 'cta', {
+        href: el.getAttribute('href') || '',
+      }), { passive: true });
     });
   }
 
@@ -70,16 +270,23 @@ import Footer from '../components/Footer.astro';
     });
   }
 
-  // Boot
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initNavbar();
-      initSmoothScroll();
-      initKeyboard();
-    });
-  } else {
+  function boot() {
     initNavbar();
     initSmoothScroll();
+    initMobileMenu();
+    initTheme();
+    initReveal();
+    initViewers();
+    initFilters();
+    initOfferModal();
+    initExitIntent();
+    initTracking();
     initKeyboard();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
   }
 </script>

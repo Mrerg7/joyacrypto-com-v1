@@ -1,38 +1,72 @@
 ---
-import { SITE, NAV_LINKS } from '../consts';
+import { NAV_LINKS } from '../consts';
 ---
 
-<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-zinc-800">
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md" aria-label="Primary">
   <div class="max-w-screen-xl mx-auto px-6">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
-      <div class="flex items-center gap-x-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-500 flex items-center justify-center shadow-inner">
+      <a href="#main" class="flex items-center gap-x-3 tap-target rounded-xl" aria-label="Joyacrypto.com home">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-500 flex items-center justify-center shadow-inner" aria-hidden="true">
           <i class="fa-solid fa-gem text-zinc-950 text-2xl"></i>
         </div>
         <div>
           <span class="font-semibold text-2xl tracking-tighter">Joyacrypto</span>
           <span class="text-xs text-zinc-500 font-mono tracking-[3px] block -mt-1">.COM</span>
         </div>
-      </div>
+      </a>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-x-8 text-sm">
+      <div class="hidden md:flex items-center gap-x-8 text-base">
         {NAV_LINKS.map((link) => (
-          <a href={link.href} class="hover:text-emerald-400 transition-colors">{link.label}</a>
+          <a href={link.href} class="hover:text-emerald-400 transition-colors py-3">{link.label}</a>
         ))}
+        <a href="#faq" class="hover:text-emerald-400 transition-colors py-3">FAQ</a>
       </div>
 
-      <div class="flex items-center gap-x-3">
+      <div class="flex items-center gap-x-2 sm:gap-x-3">
+        <button
+          id="theme-toggle"
+          type="button"
+          class="tap-target inline-flex items-center justify-center w-12 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-all"
+          aria-label="Toggle light and dark mode"
+          aria-pressed="false"
+        >
+          <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+        </button>
         <a href="#contact"
-           class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-all active:scale-[0.985]">
+           data-track="cta-header-inquire"
+           class="tap-target hidden sm:inline-flex items-center justify-center px-5 text-sm font-semibold rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-all active:scale-[0.985]">
           Inquire Now
         </a>
         <a href="#contact"
-           class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-zinc-950 transition-all active:scale-[0.985] shadow-lg shadow-emerald-400/20">
+           data-track="cta-header-acquire"
+           class="tap-target inline-flex items-center justify-center px-6 text-sm font-semibold rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-zinc-950 transition-all active:scale-[0.985] shadow-lg shadow-emerald-400/20">
           <span class="font-semibold">Acquire Domain</span>
         </a>
+        <!-- Mobile hamburger (>=48px target) -->
+        <button
+          id="menu-button"
+          type="button"
+          class="tap-target md:hidden inline-flex items-center justify-center w-12 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-all"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+        </button>
       </div>
+    </div>
+  </div>
+
+  <!-- Collapsible mobile navigation -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-md">
+    <div class="px-6 py-4 flex flex-col gap-1 text-base">
+      {NAV_LINKS.map((link) => (
+        <a href={link.href} class="mobile-link tap-target inline-flex items-center rounded-xl px-3 hover:bg-zinc-900 hover:text-emerald-400 transition-colors">{link.label}</a>
+      ))}
+      <a href="#faq" class="mobile-link tap-target inline-flex items-center rounded-xl px-3 hover:bg-zinc-900 hover:text-emerald-400 transition-colors">FAQ</a>
+      <a href="#contact" data-track="cta-mobile-acquire" class="mobile-link tap-target inline-flex items-center justify-center rounded-2xl mt-2 px-6 font-semibold bg-emerald-400 text-zinc-950">Acquire Domain</a>
     </div>
   </div>
 </nav>

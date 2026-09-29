@@ -2,50 +2,64 @@
 import { SITE } from '../consts';
 ---
 
-<section id="contact" class="bg-zinc-900 border-t border-zinc-800 py-16">
+<section id="contact" class="bg-zinc-900 border-t border-zinc-800 py-16" aria-labelledby="contact-heading">
   <div class="max-w-screen-xl mx-auto px-6">
     <div class="max-w-3xl mx-auto text-center">
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-emerald-400 to-emerald-500 mb-6 shadow-inner">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-gradient-to-br from-emerald-400 to-emerald-500 mb-6 shadow-inner" aria-hidden="true">
         <i class="fa-solid fa-gem text-zinc-950 text-3xl"></i>
       </div>
 
-      <h2 class="text-4xl md:text-5xl font-semibold tracking-tighter mb-4">Ready to own<br>a true crypto jewel?</h2>
-      <p class="text-xl text-zinc-400 max-w-md mx-auto">Joyacrypto.com is available for private acquisition by serious founders and organizations building premium digital experiences.</p>
+      <h2 id="contact-heading" class="reveal text-4xl md:text-5xl font-semibold tracking-tighter mb-4">Ready to own<br />a true crypto jewel?</h2>
+      <p class="text-lg md:text-xl text-zinc-400 max-w-md mx-auto">Joyacrypto.com is available for private acquisition by serious founders and organizations building premium digital experiences.</p>
 
       <div class="mt-8 max-w-md mx-auto">
         <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8 text-left">
           <div class="uppercase text-xs tracking-[2px] text-emerald-400 font-semibold mb-3">ACQUISITION DETAILS</div>
 
-          <div class="space-y-4 text-sm">
-            <div class="flex justify-between items-center py-1 border-b border-zinc-800">
-              <span class="text-zinc-400">Domain</span>
-              <span class="font-mono font-medium text-white">joyacrypto.com</span>
+          <dl class="space-y-4 text-base">
+            <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
+              <dt class="text-zinc-400">Domain</dt>
+              <dd class="font-mono font-medium text-white">joyacrypto.com</dd>
             </div>
-            <div class="flex justify-between items-center py-1 border-b border-zinc-800">
-              <span class="text-zinc-400">Extension</span>
-              <span class="font-medium">.com (Premium)</span>
+            <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
+              <dt class="text-zinc-400">Extension</dt>
+              <dd class="font-medium">.com (Premium)</dd>
             </div>
-            <div class="flex justify-between items-center py-1 border-b border-zinc-800">
-              <span class="text-zinc-400">Positioning</span>
-              <span class="font-medium">Luxury / Premium Brand Asset</span>
+            <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
+              <dt class="text-zinc-400">Positioning</dt>
+              <dd class="font-medium">Luxury / Premium Brand Asset</dd>
+            </div>
+            <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
+              <dt class="text-zinc-400">Transfer</dt>
+              <dd class="font-medium text-emerald-400"><i class="fa-solid fa-shield-halved mr-1" aria-hidden="true"></i>Escrow protected</dd>
             </div>
             <div class="pt-2">
-              <div class="text-xs text-zinc-500">Pricing reflects the name's rarity, emotional resonance, keyword strength, and strong positioning in the premium crypto and digital asset space. Inquiries from qualified buyers and representatives are welcome. Flexible terms considered.</div>
+              <p class="text-sm text-zinc-500">Pricing reflects the name's rarity, emotional resonance, keyword strength, and strong positioning in the premium crypto and digital asset space. Inquiries from qualified buyers and representatives are welcome. Flexible terms considered.</p>
             </div>
-          </div>
+          </dl>
         </div>
       </div>
 
-      <!-- Contact CTA -->
-      <div class="mt-8">
-        <a href={`mailto:${SITE.email}?subject=Inquiry%20for%20Joyacrypto.com&body=Hello%2C%0A%0AI%20am%20interested%20in%20acquiring%20joyacrypto.com.%0A%0APlease%20provide%20pricing%20and%20next%20steps.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D%0A%5BYour%20Company%20/%20Project%5D`}
-           class="group inline-flex w-full sm:w-auto items-center justify-center gap-x-3 px-10 py-5 text-lg font-semibold rounded-3xl bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-300 hover:to-emerald-400 active:scale-[0.985] text-zinc-950 shadow-xl transition-all">
-          <span>Contact to Acquire</span>
-          <i class="fa-solid fa-envelope group-hover:-translate-y-px transition-transform"></i>
+      <!-- Multiple CTAs by price tier -->
+      <div class="mt-8 grid gap-3 sm:grid-cols-3 max-w-2xl mx-auto">
+        <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Buy Now: Joyacrypto.com')}&body=${encodeURIComponent('Hello,\n\nI would like to proceed with acquiring joyacrypto.com.\n\nPlease send escrow and transfer instructions.\n\nBest regards,\n[Your Name]\n[Your Company / Project]')}`}
+           data-track="cta-contact-buy"
+           class="tap-target inline-flex items-center justify-center gap-x-2 px-6 font-semibold rounded-3xl bg-white text-zinc-950 hover:bg-emerald-50 active:scale-[0.985] transition-all shadow-xl">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i><span>Buy Now</span>
         </a>
-
-        <p class="mt-4 text-xs text-zinc-500">Serious inquiries only. Pricing and terms provided privately to qualified buyers.</p>
+        <button type="button" data-open-offer data-track="cta-contact-offer"
+           class="tap-target inline-flex items-center justify-center gap-x-2 px-6 font-semibold rounded-3xl bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-300 hover:to-emerald-400 active:scale-[0.985] text-zinc-950 shadow-xl transition-all">
+          <i class="fa-solid fa-tag" aria-hidden="true"></i><span>Make Offer</span>
+        </button>
+        <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Inquiry for Joyacrypto.com')}&body=${encodeURIComponent('Hello,\n\nI am interested in acquiring joyacrypto.com.\n\nPlease provide pricing and next steps.\n\nBest regards,\n[Your Name]\n[Your Company / Project]')}`}
+           data-track="cta-contact-agent"
+           class="tap-target inline-flex items-center justify-center gap-x-2 px-6 font-medium rounded-3xl border border-zinc-700 hover:bg-zinc-950 transition-all">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Contact Agent</span>
+        </a>
       </div>
+
+      <p class="mt-4 text-xs text-zinc-500">Serious inquiries only. Pricing and terms provided privately to qualified buyers.</p>
+      <p class="mt-2 text-xs text-zinc-500"><i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>SSL secured · Escrow via trusted partners · <a class="underline hover:text-emerald-400" href="#faq">How escrow works</a></p>
     </div>
   </div>
 </section>

@@ -1,7 +1,9 @@
 export const SITE = {
-  title: 'Joyacrypto.com • Crypto Jewel | Premium Domain for Sale',
+  title: 'Joyacrypto.com | Premium Domain for Sale | Crypto Jewel',
   description:
-    'Joyacrypto.com — The premium .com domain meaning \'Crypto Jewel\'. A rare, beautiful, and valuable brand asset for the next generation of premium crypto projects, luxury digital assets, and enduring wealth platforms.',
+    'Joyacrypto.com for sale — premium .com meaning “Crypto Jewel”. Available now via secure escrow. Make an offer or buy now. Ideal for luxury crypto, DeFi, NFTs & Web3 brands.',
+  keywords:
+    'buy crypto domains, joyacrypto.com for sale, premium domain names, crypto domain marketplace, luxury crypto brand, investment domains, brandable .com domains',
   url: 'https://joyacrypto.com/',
   domain: 'joyacrypto.com',
   email: 'sales@desertrich.com',
@@ -78,35 +80,105 @@ export const USE_CASES = [
     description:
       'Ideal for premium token projects, high-end NFT collections, or tokenized luxury goods and real-world assets that deserve to be treated like rare jewels.',
     icon: 'fa-gem',
+    category: 'luxury',
   },
   {
     title: 'Premium DeFi or Wealth Platform',
     description:
       "Position your protocol or app as the place where discerning users come to discover and hold the true 'jewels' of decentralized finance.",
     icon: 'fa-chart-line',
+    category: 'business',
   },
   {
     title: 'High-End NFT Marketplace',
     description:
       '"Jewel" is the perfect metaphor for curated, rare, and valuable digital collectibles. Excellent for premium or blue-chip NFT platforms.',
     icon: 'fa-images',
+    category: 'crypto',
   },
   {
     title: 'Crypto Education & Onboarding',
     description:
       "Help newcomers discover the real 'jewels' in crypto. Strong positioning for premium education platforms, research, or high-signal content.",
     icon: 'fa-graduation-cap',
+    category: 'business',
   },
   {
     title: 'Wealth Management or Family Office',
     description:
       'Premium, discreet positioning for platforms serving high-net-worth individuals seeking the rarest and most valuable digital assets.',
     icon: 'fa-hand-holding-usd',
+    category: 'business',
   },
   {
     title: 'Tokenized Real-World Assets (RWA)',
     description:
       "Perfect for platforms bringing real luxury assets, art, or collectibles on-chain. 'Crypto Jewel' speaks directly to quality and scarcity.",
     icon: 'fa-globe',
+    category: 'crypto',
+  },
+] as const;
+
+export const USE_CASE_FILTERS = [
+  { value: 'all', label: 'All' },
+  { value: 'crypto', label: 'Crypto & Web3' },
+  { value: 'business', label: 'Business & DeFi' },
+  { value: 'luxury', label: 'Luxury & Brandable' },
+] as const;
+
+export const TRUST_SIGNALS = [
+  { icon: 'fa-shield-halved', title: 'Escrow Protected', text: 'Secure transfer via licensed escrow partners' },
+  { icon: 'fa-lock', title: 'SSL Secured', text: 'Encrypted inquiry & transaction flow' },
+  { icon: 'fa-handshake', title: 'Transfer Guarantee', text: 'Registrar push + ownership verification' },
+] as const;
+
+export const COMPARABLE_SALES = [
+  { domain: 'Crypto-related .com', range: 'High 5 – 7 figures', note: 'Premium keyword .coms in fintech / crypto' },
+  { domain: 'Luxury brandables', range: 'Strong end-user premiums', note: 'Short, emotional, cross-cultural names' },
+  { domain: '.com liquidity', range: 'Most trusted TLD', note: 'Highest resale demand & type-in authority' },
+] as const;
+
+export const TESTIMONIALS = [
+  {
+    quote: 'A great premium .com pays for itself in trust. Short, memorable, instant credibility.',
+    author: 'Domain investor',
+    role: 'Portfolio holder, tech niches',
+  },
+  {
+    quote: 'We closed via escrow in days — verified ownership, clean registrar push, zero friction.',
+    author: 'Startup founder',
+    role: 'Recent .com acquisition',
+  },
+  {
+    quote: 'Emotional, cross-cultural names outperform generic keywords on brand recall.',
+    author: 'Brand strategist',
+    role: 'Web3 & luxury positioning',
+  },
+] as const;
+
+export const FAQS = [
+  {
+    q: 'Is Joyacrypto.com available for purchase?',
+    a: 'Yes. Joyacrypto.com is available for private acquisition. Submit an inquiry or make an offer and you will receive pricing and next steps by email.',
+  },
+  {
+    q: 'How does the secure purchase process work?',
+    a: 'We use a licensed escrow partner: funds are held in escrow, the domain is pushed to your registrar account, you confirm receipt, then funds are released to the seller.',
+  },
+  {
+    q: 'How is the price determined?',
+    a: 'Pricing reflects keyword strength (“crypto”), emotional resonance (“joya” = jewel), .com liquidity, length, brandability, and comparable premium crypto / luxury domain sales. Terms are provided privately to qualified buyers.',
+  },
+  {
+    q: 'Can I make an offer or request payment terms?',
+    a: 'Yes. Use “Make Offer” to propose a price or request flexible terms. Serious inquiries from founders, organizations, and brokers are welcome.',
+  },
+  {
+    q: 'How fast can the transfer complete?',
+    a: 'Most escrowed .com transfers complete within 1–7 days depending on registrar, verification, and payment method.',
+  },
+  {
+    q: 'What is Joyacrypto ideal for?',
+    a: 'Luxury crypto products, premium DeFi, high-end NFT marketplaces, tokenized real-world assets, crypto education, and wealth platforms targeting discerning global audiences.',
   },
 ] as const;

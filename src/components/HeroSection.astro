@@ -1,19 +1,25 @@
 ---
-import { SITE } from '../consts';
+import { SITE, TRUST_SIGNALS } from '../consts';
 ---
 
-<section class="pt-20 pb-16 md:pt-24 md:pb-20 border-b border-zinc-800">
+<section class="pt-28 pb-16 md:pt-32 md:pb-20 border-b border-zinc-800" aria-labelledby="hero-heading">
   <div class="max-w-screen-xl mx-auto px-6">
     <div class="grid md:grid-cols-12 gap-x-8 items-center">
       <!-- Hero Text -->
       <div class="md:col-span-7 lg:col-span-7 max-w-2xl">
-        <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-zinc-900 border border-zinc-800 mb-6">
-          <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-          <span class="text-xs font-medium tracking-[1.5px] text-emerald-400">PREMIUM .COM DOMAIN</span>
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+          <div class="inline-flex items-center gap-x-2 px-4 py-2 rounded-3xl bg-zinc-900 border border-zinc-800">
+            <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true"></div>
+            <span class="text-xs font-medium tracking-[1.5px] text-emerald-400">PREMIUM .COM DOMAIN — AVAILABLE NOW</span>
+          </div>
+          <div class="inline-flex items-center gap-x-2 px-4 py-2 rounded-3xl bg-emerald-400/10 border border-emerald-400/30 text-xs font-semibold tracking-wide text-emerald-400">
+            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+            <span>1 OF 1 ASSET</span>
+          </div>
         </div>
 
-        <h1 class="text-6xl md:text-7xl lg:text-7xl leading-[0.92] tracking-tighter font-semibold mb-4">
-          <span class="domain-name">Joyacrypto</span><br>
+        <h1 id="hero-heading" class="text-6xl md:text-7xl lg:text-7xl leading-[0.92] tracking-tighter font-semibold mb-4">
+          <span class="domain-name">Joyacrypto</span><br />
           <span class="text-5xl md:text-6xl text-white">.com</span>
         </h1>
 
@@ -21,31 +27,52 @@ import { SITE } from '../consts';
           Crypto Jewel
         </p>
 
-        <p class="max-w-lg text-xl text-zinc-400 mb-8">
-          The premium domain that captures the rare beauty and enduring value of digital wealth.
+        <p class="max-w-lg text-lg md:text-xl text-zinc-400 mb-4">
+          Buy Joyacrypto.com — the premium domain for luxury crypto, DeFi &amp; Web3 brands. Secure escrow, fast transfer, private sale.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4">
+        <!-- Urgency: live viewers + availability -->
+        <p class="flex items-center gap-x-2 text-sm text-zinc-500 mb-6" aria-live="polite">
+          <span class="relative flex h-2.5 w-2.5" aria-hidden="true">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+          </span>
+          <span><strong id="viewer-count" class="text-zinc-300 font-semibold">14</strong> buyers viewing this domain right now · First-come, first-served</span>
+        </p>
+
+        <!-- Triple CTA by price tier: Buy Now / Make Offer / Contact Agent -->
+        <div class="flex flex-col sm:flex-row gap-3">
           <a href="#contact"
-             class="group inline-flex items-center justify-center gap-x-3 px-8 py-4 text-base font-semibold rounded-3xl bg-white text-zinc-950 hover:bg-emerald-50 active:scale-[0.985] transition-all shadow-xl">
-            <span>Secure This Domain</span>
-            <i class="fa-solid fa-arrow-right group-hover:translate-x-0.5 transition-transform"></i>
+             data-track="cta-hero-buy"
+             data-intent="buy"
+             class="tap-target group inline-flex items-center justify-center gap-x-3 px-8 text-base font-semibold rounded-3xl bg-white text-zinc-950 hover:bg-emerald-50 active:scale-[0.985] transition-all shadow-xl">
+            <span>Buy Now</span>
+            <i class="fa-solid fa-arrow-right group-hover:translate-x-0.5 transition-transform" aria-hidden="true"></i>
           </a>
 
-          <a href="#opportunity"
-             class="inline-flex items-center justify-center gap-x-2 px-7 py-4 text-base font-medium rounded-3xl border border-zinc-700 hover:bg-zinc-900 transition-all">
-            <span>Explore the Opportunity</span>
+          <button type="button"
+             data-track="cta-hero-offer"
+             data-open-offer
+             class="tap-target inline-flex items-center justify-center gap-x-2 px-7 text-base font-semibold rounded-3xl bg-emerald-400 hover:bg-emerald-300 text-zinc-950 transition-all active:scale-[0.985] shadow-lg shadow-emerald-400/20">
+            <span>Make Offer</span>
+          </button>
+
+          <a href="#contact"
+             data-track="cta-hero-agent"
+             class="tap-target inline-flex items-center justify-center gap-x-2 px-7 text-base font-medium rounded-3xl border border-zinc-700 hover:bg-zinc-900 transition-all">
+            <span>Contact Agent</span>
           </a>
         </div>
 
-        <div class="mt-8 flex items-center gap-x-6 text-sm text-zinc-500">
-          <div class="flex items-center gap-x-1.5">
-            <i class="fa-solid fa-gem text-emerald-400"></i>
-            <span>Rare &amp; Enduring Value</span>
-          </div>
-          <div class="w-px h-3 bg-zinc-700"></div>
-          <div>Instant Prestige</div>
-        </div>
+        <!-- Trust signals row -->
+        <ul class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm" aria-label="Transaction guarantees">
+          {TRUST_SIGNALS.map((s) => (
+            <li class="flex items-center gap-x-2.5 text-zinc-400">
+              <i class={`fa-solid ${s.icon} text-emerald-400 text-lg`} aria-hidden="true"></i>
+              <span><strong class="text-zinc-200 font-semibold block leading-tight">{s.title}</strong><span class="text-xs text-zinc-500">{s.text}</span></span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <!-- Hero Visual -->
@@ -55,14 +82,19 @@ import { SITE } from '../consts';
             src={SITE.heroImage}
             alt="Brilliant glowing emerald crypto jewel with Bitcoin and Ethereum symbols — representing the rare beauty and value of Joyacrypto.com"
             class="w-full h-auto object-cover aspect-[16/10.5]"
+            width="800"
+            height="525"
             loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-zinc-950/20 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-zinc-950/20 to-transparent" aria-hidden="true"></div>
           <div class="absolute bottom-5 left-5 right-5">
             <div class="text-xs uppercase tracking-[2px] text-emerald-400/90 font-medium">THE NEW PRECIOUS STONES</div>
             <div class="text-white text-xl font-semibold tracking-tight">Digital jewels of lasting value.</div>
           </div>
         </div>
+        <p class="mt-3 text-center text-xs text-zinc-500">joyacrypto.com · Premium .com · Escrow available · <a class="underline hover:text-emerald-400" href="#faq">How buying works</a></p>
       </div>
     </div>
   </div>

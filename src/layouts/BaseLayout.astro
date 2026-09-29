@@ -1,65 +1,170 @@
 ---
 import '../styles/global.css';
-import { SITE } from '../consts';
+import { SITE, FAQS } from '../consts';
 
 const { title = SITE.title, description = SITE.description, ogImage = SITE.ogImage } = Astro.props;
+const canonical = SITE.url;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Joyacrypto.com',
+  alternateName: 'Crypto Jewel',
+  url: canonical,
+  description,
+  inLanguage: 'en',
+};
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Joyacrypto.com',
+  url: canonical,
+  logo: ogImage,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: SITE.email,
+    contactType: 'sales',
+    availableLanguage: ['English', 'Spanish'],
+  },
+};
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Joyacrypto.com — Premium Domain for Sale',
+  description,
+  image: ogImage,
+  brand: { '@type': 'Brand', name: 'Joyacrypto' },
+  category: 'Premium domain name',
+  url: canonical,
+  offers: {
+    '@type': 'Offer',
+    url: canonical,
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
+    seller: { '@type': 'Organization', name: 'Joyacrypto.com Private Seller' },
+  },
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: canonical },
+    { '@type': 'ListItem', position: 2, name: 'Why Premium', item: `${canonical}#why-premium` },
+    { '@type': 'ListItem', position: 3, name: 'Acquire', item: `${canonical}#contact` },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="tJ59CIkq6gFoplfoRQ3Wz1Vae-KXxU7Lh6QJbbehIug" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content={SITE.keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Joyacrypto.com" />
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Canonical (prevents duplicate content) -->
+    <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={SITE.url} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Joyacrypto.com — Crypto Jewel premium domain" />
     <meta property="og:site_name" content="Joyacrypto.com" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Joyacrypto.com — Crypto Jewel premium domain" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href={SITE.url} />
-
-    <!-- Favicon -->
+    <!-- Favicon + PWA -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Performance: preconnect + preload (Core Web Vitals <2s) -->
+    <link rel="preconnect" href="https://imagedelivery.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://imagedelivery.net" />
+    <link rel="preload" as="image" href={SITE.heroImage} fetchpriority="high" />
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json" set:html={`{
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Joyacrypto.com",
-      "alternateName": "Crypto Jewel",
-      "url": "${SITE.url}",
-      "description": "${description}",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "${SITE.url}/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }`}>
-    </script>
+    <!-- Fonts: non-blocking with display=swap -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      />
+    </noscript>
+
+    <!-- Non-blocking Font Awesome (prevents render-blocking CSS) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    </noscript>
+
+    <!-- Structured data: WebSite + Organization + Product/Offer + FAQ + Breadcrumb -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   </head>
   <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-3 focus:rounded-xl focus:bg-emerald-400 focus:text-zinc-950 focus:font-semibold"
+    >
+      Skip to content
+    </a>
     <slot />
   </body>
 </html>

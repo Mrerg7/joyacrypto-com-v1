@@ -1,0 +1,71 @@
+---
+import { SITE } from '../consts';
+---
+
+<!-- Conversion overlays: Make-Offer modal + exit-intent email capture (free-plan, no backend) -->
+<div id="offer-modal" class="hidden fixed inset-0 z-[90] items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="offer-title">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-offer aria-hidden="true"></div>
+  <div class="relative w-full max-w-lg rounded-3xl border border-zinc-700 bg-zinc-950 p-8 shadow-2xl">
+    <button type="button" data-close-offer class="tap-target absolute top-3 right-3 inline-flex w-12 items-center justify-center rounded-xl text-zinc-400 hover:bg-zinc-900 hover:text-white" aria-label="Close offer dialog">
+      <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
+    </button>
+    <div class="text-xs uppercase tracking-[2px] text-emerald-400 font-semibold mb-2">MAKE AN OFFER</div>
+    <h2 id="offer-title" class="text-3xl font-semibold tracking-tight text-white mb-2">Offer for Joyacrypto.com</h2>
+    <p class="text-base text-zinc-400 mb-6">Private sale · escrow protected · response within 1 business day.</p>
+    <form id="offer-form" class="grid gap-4" novalidate>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <label class="grid gap-1.5 text-sm">
+          <span class="text-zinc-300 font-medium">Your name *</span>
+          <input required name="name" type="text" autocomplete="name" placeholder="Ada Nakamoto"
+            class="tap-target rounded-xl border border-zinc-700 bg-zinc-900 px-4 text-base text-white placeholder:text-zinc-600 focus:border-emerald-400" />
+        </label>
+        <label class="grid gap-1.5 text-sm">
+          <span class="text-zinc-300 font-medium">Email *</span>
+          <input required name="email" type="email" autocomplete="email" placeholder="you@company.com"
+            class="tap-target rounded-xl border border-zinc-700 bg-zinc-900 px-4 text-base text-white placeholder:text-zinc-600 focus:border-emerald-400" />
+        </label>
+      </div>
+      <label class="grid gap-1.5 text-sm">
+        <span class="text-zinc-300 font-medium">Offer amount (USD) *</span>
+        <input required name="amount" type="number" min="1" inputmode="numeric" placeholder="e.g. 25000"
+          class="tap-target rounded-xl border border-zinc-700 bg-zinc-900 px-4 text-base text-white placeholder:text-zinc-600 focus:border-emerald-400" />
+      </label>
+      <label class="grid gap-1.5 text-sm">
+        <span class="text-zinc-300 font-medium">Message</span>
+        <textarea name="message" rows="3" placeholder="Timeline, intended use, payment preference…"
+          class="rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-base text-white placeholder:text-zinc-600 focus:border-emerald-400"></textarea>
+      </label>
+      <p id="offer-error" class="hidden text-sm text-red-400" role="alert">Please add your name, a valid email, and an offer amount.</p>
+      <button type="submit" data-track="offer-submit"
+        class="tap-target inline-flex items-center justify-center gap-x-2 rounded-2xl bg-emerald-400 px-8 font-semibold text-zinc-950 hover:bg-emerald-300 transition-all">
+        <span>Submit Offer via Email</span>
+        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+      </button>
+      <p class="text-xs text-zinc-500 text-center">Opens your email client addressed to {SITE.email} — no data stored on this site.</p>
+    </form>
+  </div>
+</div>
+
+<div id="exit-popup" class="hidden fixed inset-0 z-[90] items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-exit aria-hidden="true"></div>
+  <div class="relative w-full max-w-md rounded-3xl border border-zinc-700 bg-zinc-950 p-8 text-center shadow-2xl">
+    <button type="button" data-close-exit class="tap-target absolute top-3 right-3 inline-flex w-12 items-center justify-center rounded-xl text-zinc-400 hover:bg-zinc-900 hover:text-white" aria-label="Dismiss offer">
+      <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
+    </button>
+    <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-400/10" aria-hidden="true">
+      <i class="fa-solid fa-gem text-2xl text-emerald-400"></i>
+    </div>
+    <h2 id="exit-title" class="text-2xl font-semibold tracking-tight text-white mb-2">Before you go…</h2>
+    <p class="text-base text-zinc-400 mb-6">Joyacrypto.com is a 1-of-1 asset. Get pricing &amp; escrow steps by email — no spam, serious inquiries only.</p>
+    <form id="exit-form" class="grid gap-3" novalidate>
+      <label class="sr-only" for="exit-email">Email address</label>
+      <input id="exit-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"
+        class="tap-target rounded-xl border border-zinc-700 bg-zinc-900 px-4 text-base text-white placeholder:text-zinc-600 focus:border-emerald-400" />
+      <p id="exit-error" class="hidden text-sm text-red-400" role="alert">Please enter a valid email address.</p>
+      <button type="submit" data-track="exit-email-submit"
+        class="tap-target inline-flex items-center justify-center rounded-2xl bg-emerald-400 px-8 font-semibold text-zinc-950 hover:bg-emerald-300 transition-all">
+        Send Me Pricing
+      </button>
+    </form>
+  </div>
+</div>
