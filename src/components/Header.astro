@@ -19,12 +19,26 @@ import { NAV_LINKS } from '../consts';
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center gap-x-8 text-base">
         {NAV_LINKS.map((link) => (
-          <a href={link.href} class="hover:text-emerald-400 transition-colors py-3">{link.label}</a>
+          <a
+            href={link.href}
+            class="hover:text-emerald-400 transition-colors py-3"
+            data-i18n={link.href === '#meaning' ? 'nav.meaning' : link.href === '#opportunity' ? 'nav.opportunity' : link.href === '#why-premium' ? 'nav.premium' : 'nav.usecases'}
+          >{link.label}</a>
         ))}
-        <a href="#faq" class="hover:text-emerald-400 transition-colors py-3">FAQ</a>
+        <a href="#faq" class="hover:text-emerald-400 transition-colors py-3" data-i18n="nav.faq">FAQ</a>
       </div>
 
       <div class="flex items-center gap-x-2 sm:gap-x-3">
+        <button
+          id="lang-toggle"
+          type="button"
+          class="tap-target inline-flex items-center justify-center w-12 rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-all text-sm font-bold tracking-wide"
+          aria-label="Switch to Spanish"
+          aria-pressed="false"
+          title="EN / ES"
+        >
+          <span id="lang-label" aria-hidden="true">ES</span>
+        </button>
         <button
           id="theme-toggle"
           type="button"
@@ -36,13 +50,14 @@ import { NAV_LINKS } from '../consts';
         </button>
         <a href="#contact"
            data-track="cta-header-inquire"
+           data-i18n="header.inquire"
            class="tap-target hidden sm:inline-flex items-center justify-center px-5 text-sm font-semibold rounded-2xl border border-zinc-700 hover:bg-zinc-900 transition-all active:scale-[0.985]">
           Inquire Now
         </a>
         <a href="#contact"
            data-track="cta-header-acquire"
            class="tap-target inline-flex items-center justify-center px-6 text-sm font-semibold rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-zinc-950 transition-all active:scale-[0.985] shadow-lg shadow-emerald-400/20">
-          <span class="font-semibold">Acquire Domain</span>
+          <span class="font-semibold" data-i18n="header.acquire">Acquire Domain</span>
         </a>
         <!-- Mobile hamburger (>=48px target) -->
         <button
@@ -63,10 +78,13 @@ import { NAV_LINKS } from '../consts';
   <div id="mobile-menu" class="md:hidden hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-md">
     <div class="px-6 py-4 flex flex-col gap-1 text-base">
       {NAV_LINKS.map((link) => (
-        <a href={link.href} class="mobile-link tap-target inline-flex items-center rounded-xl px-3 hover:bg-zinc-900 hover:text-emerald-400 transition-colors">{link.label}</a>
+        <a
+          href={link.href}
+          data-i18n={link.href === '#meaning' ? 'nav.meaning' : link.href === '#opportunity' ? 'nav.opportunity' : link.href === '#why-premium' ? 'nav.premium' : 'nav.usecases'}
+          class="mobile-link tap-target inline-flex items-center rounded-xl px-3 hover:bg-zinc-900 hover:text-emerald-400 transition-colors">{link.label}</a>
       ))}
-      <a href="#faq" class="mobile-link tap-target inline-flex items-center rounded-xl px-3 hover:bg-zinc-900 hover:text-emerald-400 transition-colors">FAQ</a>
-      <a href="#contact" data-track="cta-mobile-acquire" class="mobile-link tap-target inline-flex items-center justify-center rounded-2xl mt-2 px-6 font-semibold bg-emerald-400 text-zinc-950">Acquire Domain</a>
+      <a href="#faq" data-i18n="nav.faq" class="mobile-link tap-target inline-flex items-center rounded-xl px-3 hover:bg-zinc-900 hover:text-emerald-400 transition-colors">FAQ</a>
+      <a href="#contact" data-track="cta-mobile-acquire" class="mobile-link tap-target inline-flex items-center justify-center rounded-2xl mt-2 px-6 font-semibold bg-emerald-400 text-zinc-950"><span data-i18n="header.acquire">Acquire Domain</span></a>
     </div>
   </div>
 </nav>

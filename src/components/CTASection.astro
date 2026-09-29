@@ -9,12 +9,12 @@ import { SITE } from '../consts';
         <i class="fa-solid fa-gem text-zinc-950 text-3xl"></i>
       </div>
 
-      <h2 id="contact-heading" class="reveal text-4xl md:text-5xl font-semibold tracking-tighter mb-4">Ready to own<br />a true crypto jewel?</h2>
-      <p class="text-lg md:text-xl text-zinc-400 max-w-md mx-auto">Joyacrypto.com is available for private acquisition by serious founders and organizations building premium digital experiences.</p>
+      <h2 id="contact-heading" class="reveal text-4xl md:text-5xl font-semibold tracking-tighter mb-4"><span data-i18n="contact.title.a">Ready to own</span><br /><span data-i18n="contact.title.b">a true crypto jewel?</span></h2>
+      <p class="text-lg md:text-xl text-zinc-400 max-w-md mx-auto" data-i18n="contact.sub">Joyacrypto.com is available for private acquisition by serious founders and organizations building premium digital experiences.</p>
 
       <div class="mt-8 max-w-md mx-auto">
         <div class="bg-zinc-950 border border-zinc-700 rounded-3xl p-8 text-left">
-          <div class="uppercase text-xs tracking-[2px] text-emerald-400 font-semibold mb-3">ACQUISITION DETAILS</div>
+          <div class="uppercase text-xs tracking-[2px] text-emerald-400 font-semibold mb-3" data-i18n="contact.details">ACQUISITION DETAILS</div>
 
           <dl class="space-y-4 text-base">
             <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
@@ -45,20 +45,20 @@ import { SITE } from '../consts';
         <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Buy Now: Joyacrypto.com')}&body=${encodeURIComponent('Hello,\n\nI would like to proceed with acquiring joyacrypto.com.\n\nPlease send escrow and transfer instructions.\n\nBest regards,\n[Your Name]\n[Your Company / Project]')}`}
            data-track="cta-contact-buy"
            class="tap-target inline-flex items-center justify-center gap-x-2 px-6 font-semibold rounded-3xl bg-white text-zinc-950 hover:bg-emerald-50 active:scale-[0.985] transition-all shadow-xl">
-          <i class="fa-solid fa-bolt" aria-hidden="true"></i><span>Buy Now</span>
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i><span data-i18n="contact.buy">Buy Now</span>
         </a>
         <button type="button" data-open-offer data-track="cta-contact-offer"
            class="tap-target inline-flex items-center justify-center gap-x-2 px-6 font-semibold rounded-3xl bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-300 hover:to-emerald-400 active:scale-[0.985] text-zinc-950 shadow-xl transition-all">
-          <i class="fa-solid fa-tag" aria-hidden="true"></i><span>Make Offer</span>
+          <i class="fa-solid fa-tag" aria-hidden="true"></i><span data-i18n="contact.offer">Make Offer</span>
         </button>
         <a href={`mailto:${SITE.email}?subject=${encodeURIComponent('Inquiry for Joyacrypto.com')}&body=${encodeURIComponent('Hello,\n\nI am interested in acquiring joyacrypto.com.\n\nPlease provide pricing and next steps.\n\nBest regards,\n[Your Name]\n[Your Company / Project]')}`}
            data-track="cta-contact-agent"
            class="tap-target inline-flex items-center justify-center gap-x-2 px-6 font-medium rounded-3xl border border-zinc-700 hover:bg-zinc-950 transition-all">
-          <i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Contact Agent</span>
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i><span data-i18n="contact.agent">Contact Agent</span>
         </a>
       </div>
 
-      <p class="mt-4 text-xs text-zinc-500">Serious inquiries only. Pricing and terms provided privately to qualified buyers.</p>
+      <p class="mt-4 text-xs text-zinc-500" data-i18n="contact.serious">Serious inquiries only. Pricing and terms provided privately to qualified buyers.</p>
       <p class="mt-2 text-xs text-zinc-500"><i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>SSL secured · Escrow via trusted partners · <a class="underline hover:text-emerald-400" href="#faq">How escrow works</a></p>
     </div>
   </div>

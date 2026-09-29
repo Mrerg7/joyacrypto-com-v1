@@ -10,11 +10,11 @@ import { SITE, TRUST_SIGNALS } from '../consts';
         <div class="flex flex-wrap items-center gap-2 mb-6">
           <div class="inline-flex items-center gap-x-2 px-4 py-2 rounded-3xl bg-zinc-900 border border-zinc-800">
             <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true"></div>
-            <span class="text-xs font-medium tracking-[1.5px] text-emerald-400">PREMIUM .COM DOMAIN — AVAILABLE NOW</span>
+            <span class="text-xs font-medium tracking-[1.5px] text-emerald-400" data-i18n="hero.badge">PREMIUM .COM DOMAIN — AVAILABLE NOW</span>
           </div>
           <div class="inline-flex items-center gap-x-2 px-4 py-2 rounded-3xl bg-emerald-400/10 border border-emerald-400/30 text-xs font-semibold tracking-wide text-emerald-400">
             <i class="fa-solid fa-bolt" aria-hidden="true"></i>
-            <span>1 OF 1 ASSET</span>
+            <span data-i18n="hero.asset">1 OF 1 ASSET</span>
           </div>
         </div>
 
@@ -23,11 +23,11 @@ import { SITE, TRUST_SIGNALS } from '../consts';
           <span class="text-5xl md:text-6xl text-white">.com</span>
         </h1>
 
-        <p class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-3">
+        <p class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-3" data-i18n="hero.subtitle">
           Crypto Jewel
         </p>
 
-        <p class="max-w-lg text-lg md:text-xl text-zinc-400 mb-4">
+        <p class="max-w-lg text-lg md:text-xl text-zinc-400 mb-4" data-i18n="hero.desc">
           Buy Joyacrypto.com — the premium domain for luxury crypto, DeFi &amp; Web3 brands. Secure escrow, fast transfer, private sale.
         </p>
 
@@ -37,7 +37,7 @@ import { SITE, TRUST_SIGNALS } from '../consts';
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
           </span>
-          <span><strong id="viewer-count" class="text-zinc-300 font-semibold">14</strong> buyers viewing this domain right now · First-come, first-served</span>
+          <span><strong id="viewer-count" class="text-zinc-300 font-semibold">14</strong> <span data-i18n="hero.viewers">buyers viewing this domain right now · First-come, first-served</span></span>
         </p>
 
         <!-- Triple CTA by price tier: Buy Now / Make Offer / Contact Agent -->
@@ -46,7 +46,7 @@ import { SITE, TRUST_SIGNALS } from '../consts';
              data-track="cta-hero-buy"
              data-intent="buy"
              class="tap-target group inline-flex items-center justify-center gap-x-3 px-8 text-base font-semibold rounded-3xl bg-white text-zinc-950 hover:bg-emerald-50 active:scale-[0.985] transition-all shadow-xl">
-            <span>Buy Now</span>
+            <span data-i18n="hero.buy">Buy Now</span>
             <i class="fa-solid fa-arrow-right group-hover:translate-x-0.5 transition-transform" aria-hidden="true"></i>
           </a>
 
@@ -54,13 +54,13 @@ import { SITE, TRUST_SIGNALS } from '../consts';
              data-track="cta-hero-offer"
              data-open-offer
              class="tap-target inline-flex items-center justify-center gap-x-2 px-7 text-base font-semibold rounded-3xl bg-emerald-400 hover:bg-emerald-300 text-zinc-950 transition-all active:scale-[0.985] shadow-lg shadow-emerald-400/20">
-            <span>Make Offer</span>
+            <span data-i18n="hero.offer">Make Offer</span>
           </button>
 
           <a href="#contact"
              data-track="cta-hero-agent"
              class="tap-target inline-flex items-center justify-center gap-x-2 px-7 text-base font-medium rounded-3xl border border-zinc-700 hover:bg-zinc-900 transition-all">
-            <span>Contact Agent</span>
+            <span data-i18n="hero.agent">Contact Agent</span>
           </a>
         </div>
 
@@ -94,7 +94,7 @@ import { SITE, TRUST_SIGNALS } from '../consts';
             <div class="text-white text-xl font-semibold tracking-tight">Digital jewels of lasting value.</div>
           </div>
         </div>
-        <p class="mt-3 text-center text-xs text-zinc-500">joyacrypto.com · Premium .com · Escrow available · <a class="underline hover:text-emerald-400" href="#faq">How buying works</a></p>
+        <p class="mt-3 text-center text-xs text-zinc-500">joyacrypto.com · Premium .com · Escrow available · <a class="underline hover:text-emerald-400" href="#faq" data-i18n="hero.caption.link">How buying works</a></p>
       </div>
     </div>
   </div>

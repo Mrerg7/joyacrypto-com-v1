@@ -13,7 +13,7 @@ import { SITE, NAV_LINKS } from '../consts';
 
         <h2 class="text-2xl md:text-3xl font-semibold tracking-tighter mb-3">
           <span class="text-white">Joyacrypto.com</span>{' '}
-          <span class="text-zinc-500">is available for acquisition</span>
+          <span class="text-zinc-500" data-i18n="footer.tag">is available for acquisition</span>
         </h2>
 
         <p class="text-base text-zinc-400 max-w-lg mx-auto md:mx-0 mb-8 leading-relaxed">
@@ -35,7 +35,7 @@ import { SITE, NAV_LINKS } from '../consts';
       <!-- Internal linking: category / portfolio collections -->
       <nav class="md:col-span-5 grid sm:grid-cols-2 gap-8 text-base" aria-label="Footer">
         <div>
-          <h3 class="text-xs uppercase tracking-[2px] text-zinc-500 font-semibold mb-4">Explore</h3>
+          <h3 class="text-xs uppercase tracking-[2px] text-zinc-500 font-semibold mb-4" data-i18n="footer.explore">Explore</h3>
           <ul class="space-y-1">
             {NAV_LINKS.map((l) => (
               <li><a href={l.href} class="tap-target inline-flex items-center text-zinc-400 hover:text-emerald-400 transition-colors">{l.label}</a></li>
@@ -45,7 +45,7 @@ import { SITE, NAV_LINKS } from '../consts';
           </ul>
         </div>
         <div>
-          <h3 class="text-xs uppercase tracking-[2px] text-zinc-500 font-semibold mb-4">Ideal For</h3>
+          <h3 class="text-xs uppercase tracking-[2px] text-zinc-500 font-semibold mb-4" data-i18n="footer.ideal">Ideal For</h3>
           <ul class="space-y-1">
             <li><a href="#use-cases" class="tap-target inline-flex items-center text-zinc-400 hover:text-emerald-400 transition-colors">Luxury crypto brands</a></li>
             <li><a href="#use-cases" class="tap-target inline-flex items-center text-zinc-400 hover:text-emerald-400 transition-colors">DeFi &amp; wealth platforms</a></li>

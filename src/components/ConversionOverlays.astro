@@ -9,9 +9,9 @@ import { SITE } from '../consts';
     <button type="button" data-close-offer class="tap-target absolute top-3 right-3 inline-flex w-12 items-center justify-center rounded-xl text-zinc-400 hover:bg-zinc-900 hover:text-white" aria-label="Close offer dialog">
       <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
     </button>
-    <div class="text-xs uppercase tracking-[2px] text-emerald-400 font-semibold mb-2">MAKE AN OFFER</div>
-    <h2 id="offer-title" class="text-3xl font-semibold tracking-tight text-white mb-2">Offer for Joyacrypto.com</h2>
-    <p class="text-base text-zinc-400 mb-6">Private sale · escrow protected · response within 1 business day.</p>
+    <div class="text-xs uppercase tracking-[2px] text-emerald-400 font-semibold mb-2" data-i18n="offer.eyebrow">MAKE AN OFFER</div>
+    <h2 id="offer-title" class="text-3xl font-semibold tracking-tight text-white mb-2" data-i18n="offer.title">Offer for Joyacrypto.com</h2>
+    <p class="text-base text-zinc-400 mb-6" data-i18n="offer.sub">Private sale · escrow protected · response within 1 business day.</p>
     <form id="offer-form" class="grid gap-4" novalidate>
       <div class="grid sm:grid-cols-2 gap-4">
         <label class="grid gap-1.5 text-sm">
@@ -38,7 +38,7 @@ import { SITE } from '../consts';
       <p id="offer-error" class="hidden text-sm text-red-400" role="alert">Please add your name, a valid email, and an offer amount.</p>
       <button type="submit" data-track="offer-submit"
         class="tap-target inline-flex items-center justify-center gap-x-2 rounded-2xl bg-emerald-400 px-8 font-semibold text-zinc-950 hover:bg-emerald-300 transition-all">
-        <span>Submit Offer via Email</span>
+        <span data-i18n="offer.submit">Submit Offer via Email</span>
         <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
       </button>
       <p class="text-xs text-zinc-500 text-center">Opens your email client addressed to {SITE.email} — no data stored on this site.</p>
@@ -55,8 +55,8 @@ import { SITE } from '../consts';
     <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-400/10" aria-hidden="true">
       <i class="fa-solid fa-gem text-2xl text-emerald-400"></i>
     </div>
-    <h2 id="exit-title" class="text-2xl font-semibold tracking-tight text-white mb-2">Before you go…</h2>
-    <p class="text-base text-zinc-400 mb-6">Joyacrypto.com is a 1-of-1 asset. Get pricing &amp; escrow steps by email — no spam, serious inquiries only.</p>
+    <h2 id="exit-title" class="text-2xl font-semibold tracking-tight text-white mb-2" data-i18n="exit.title">Before you go…</h2>
+    <p class="text-base text-zinc-400 mb-6" data-i18n="exit.sub">Joyacrypto.com is a 1-of-1 asset. Get pricing &amp; escrow steps by email — no spam, serious inquiries only.</p>
     <form id="exit-form" class="grid gap-3" novalidate>
       <label class="sr-only" for="exit-email">Email address</label>
       <input id="exit-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"
@@ -64,7 +64,7 @@ import { SITE } from '../consts';
       <p id="exit-error" class="hidden text-sm text-red-400" role="alert">Please enter a valid email address.</p>
       <button type="submit" data-track="exit-email-submit"
         class="tap-target inline-flex items-center justify-center rounded-2xl bg-emerald-400 px-8 font-semibold text-zinc-950 hover:bg-emerald-300 transition-all">
-        Send Me Pricing
+        <span data-i18n="exit.submit">Send Me Pricing</span>
       </button>
     </form>
   </div>
