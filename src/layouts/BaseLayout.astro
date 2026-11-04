@@ -1,9 +1,13 @@
 ---
 import '../styles/global.css';
-import { SITE, FAQS } from '../consts';
+import { SITE, FAQS, DOMAIN_PRICE } from '../consts';
 
 const { title = SITE.title, description = SITE.description, ogImage = SITE.ogImage } = Astro.props;
 const canonical = SITE.url;
+
+const priceValidUntil = new Date();
+priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
+const priceValidUntilISO = priceValidUntil.toISOString().split('T')[0];
 
 const websiteSchema = {
   '@context': 'https://schema.org',
@@ -39,10 +43,48 @@ const productSchema = {
   offers: {
     '@type': 'Offer',
     url: canonical,
-    priceCurrency: 'USD',
+    price: DOMAIN_PRICE.amountFixed,
+    priceCurrency: DOMAIN_PRICE.currency,
+    priceValidUntil: priceValidUntilISO,
     availability: 'https://schema.org/InStock',
     itemCondition: 'https://schema.org/NewCondition',
-    seller: { '@type': 'Organization', name: 'Joyacrypto.com Private Seller' },
+    seller: {
+      '@type': 'Organization',
+      name: 'Joyacrypto.com Private Seller',
+      email: SITE.email,
+    },
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: {
+        '@type': 'MonetaryAmount',
+        value: 0,
+        currency: DOMAIN_PRICE.currency,
+      },
+      shippingDestination: {
+        '@type': 'DefinedRegion',
+        addressCountry: 'US',
+      },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 1,
+          maxValue: 7,
+          unitCode: 'DAY',
+        },
+        transitTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 0,
+          maxValue: 0,
+          unitCode: 'DAY',
+        },
+      },
+    },
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'US',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+    },
   },
 };
 const faqSchema = {

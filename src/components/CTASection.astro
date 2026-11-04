@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../consts';
+import { SITE, DOMAIN_PRICE } from '../consts';
 ---
 
 <section id="contact" class="bg-zinc-900 border-t border-zinc-800 py-16" aria-labelledby="contact-heading">
@@ -26,15 +26,21 @@ import { SITE } from '../consts';
               <dd class="font-medium">.com (Premium)</dd>
             </div>
             <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
+              <dt class="text-zinc-400">Asking price</dt>
+              <dd class="font-semibold text-white">
+                {DOMAIN_PRICE.display} <span class="text-zinc-500 font-normal text-sm">{DOMAIN_PRICE.currency}</span>
+              </dd>
+            </div>
+            <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
               <dt class="text-zinc-400">Positioning</dt>
               <dd class="font-medium">Luxury / Premium Brand Asset</dd>
             </div>
             <div class="flex justify-between items-center gap-4 py-1 border-b border-zinc-800">
               <dt class="text-zinc-400">Transfer</dt>
-              <dd class="font-medium text-emerald-400"><i class="fa-solid fa-shield-halved mr-1" aria-hidden="true"></i>Escrow protected</dd>
+              <dd class="font-medium text-emerald-400"><i class="fa-solid fa-shield-halved mr-1" aria-hidden="true"></i>Escrow protected · free electronic delivery</dd>
             </div>
             <div class="pt-2">
-              <p class="text-sm text-zinc-500">Pricing reflects the name's rarity, emotional resonance, keyword strength, and strong positioning in the premium crypto and digital asset space. Inquiries from qualified buyers and representatives are welcome. Flexible terms considered.</p>
+              <p class="text-sm text-zinc-500">Asking {DOMAIN_PRICE.display} USD. Pricing reflects the name's rarity, emotional resonance, keyword strength, and strong positioning in the premium crypto and digital asset space. Offers welcome; flexible terms considered. Domain transfers are final once escrow completes (no returns).</p>
             </div>
           </dl>
         </div>
@@ -58,7 +64,7 @@ import { SITE } from '../consts';
         </a>
       </div>
 
-      <p class="mt-4 text-xs text-zinc-500" data-i18n="contact.serious">Serious inquiries only. Pricing and terms provided privately to qualified buyers.</p>
+      <p class="mt-4 text-xs text-zinc-500" data-i18n="contact.serious">Serious inquiries only. Asking {DOMAIN_PRICE.display} — offers and flexible terms considered.</p>
       <p class="mt-2 text-xs text-zinc-500"><i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>SSL secured · Escrow via trusted partners · <a class="underline hover:text-emerald-400" href="#faq">How escrow works</a></p>
     </div>
   </div>

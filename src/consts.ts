@@ -14,6 +14,14 @@ export const SITE = {
     'This website is for demonstration and informational purposes only. It does not constitute an offer of services, a commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific technologies are based on publicly available information as of the date shown and are subject to change.',
 } as const;
 
+/** Public asking price — must match Offer.price structured data and on-page acquisition copy. */
+export const DOMAIN_PRICE = {
+  amount: 27500,
+  amountFixed: '27500.00',
+  currency: 'USD',
+  display: '$27,500',
+} as const;
+
 export const NAV_LINKS = [
   { href: '#meaning', label: 'The Name' },
   { href: '#opportunity', label: 'The Opportunity' },
@@ -167,7 +175,7 @@ export const FAQS = [
   },
   {
     q: 'How is the price determined?',
-    a: 'Pricing reflects keyword strength (“crypto”), emotional resonance (“joya” = jewel), .com liquidity, length, brandability, and comparable premium crypto / luxury domain sales. Terms are provided privately to qualified buyers.',
+    a: 'The current asking price is $27,500 USD. Pricing reflects keyword strength (“crypto”), emotional resonance (“joya” = jewel), .com liquidity, length, brandability, and comparable premium crypto / luxury domain sales. Offers and flexible terms are welcome from qualified buyers.',
   },
   {
     q: 'Can I make an offer or request payment terms?',
